@@ -1,37 +1,68 @@
 <!DOCTYPE html>
 <html lang="pt">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
     <title>Palavras cruzadas</title>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+
+    <script src="main.js"></script>
 </head>
+
 <body>
 
     <!--Div com as perguntas e seus respectivos números  -->
     <div style="float:left;">
         <h1>Perguntas</h1>
-        <h3>1-Principal peça responsável por processar dados</h3>
-        <input type="text">
-        <h3>2-Sigla de computador pessoal</h3>
-        <input type="text">
-        <h3>3-Sigla da unidade lógica e Aritmética</h3>
-        <input type="text">
-        <h3>4-Micro controlador muito conhecido</h3>
-        <input type="text">
-        <h3>5-Principal Sistema da microsoft</h3>
-        <input type="text">
-        <h3>6-Versão mais utilizada do linux em desktops comuns</h3>
-        <input type="text">
-        <h3>7-Hardware com capacidade de armazenar dados enquanto ligado</h3>
-        <input type="text">
-        <h3>8-Sigla do terminal de comando do windows</h3>
-        <input type="text">
+        <div id="pergunta_1">
+            <h3>1-Principal peça responsável por processar dados</h3>
+            <input type="text" id="inp_1">
+            <button onclick="validar_1()">Ver Resposta</button>
+        </div>
+        <div id="pergunta_2">
+            <h3>2-Sigla de computador pessoal</h3>
+            <input type="text" id="inp_2">
+            <button onclick="validar_2()">Ver Resposta</button>
+        </div>
+        <div id="pergunta_3" >
+            <h3>3-Sigla da unidade lógica e Aritmética</h3>
+            <input type="text" id="inp_3" >
+            <button onclick="validar_3()">Ver Resposta</button>
+        </div>
+        <div id="pergunta_4">
+            <h3>4-Micro controlador muito conhecido</h3>
+            <input type="text" id="inp_4">
+            <button onclick="validar_4()">Ver Resposta</button>
+        </div>
+        <div id="pergunta_5">
+            <h3>5-Principal Sistema da microsoft</h3>
+            <input type="text" id="inp_5">
+            <button onclick="validar_5()">Ver Resposta</button>
+        </div>
+        <div id="pergunta_6">
+            <h3>6-Versão mais utilizada do linux em desktops comuns</h3>
+            <input type="text" id="inp_6">
+            <button onclick="validar_6()">Ver Resposta</button>
+        </div>
+        <div id="pergunta_7">
+            <h3>7-Hardware com capacidade de armazenar dados enquanto ligado</h3>
+            <input type="text" id="inp_7">
+            <button onclick="validar_7()">Ver Resposta</button>
+        </div>
+        <div id="pergunta_8">
+            <h3>8-Sigla do terminal de comando do windows</h3>
+            <input type="text" id="inp_8">
+            <button onclick="validar_8()">Ver Resposta</button>
+        </div>
+        <button onclick="recomecar()" id="resetar">Resetar Questionário</button>
+       
     </div>
 
-    <table border  style="float:right;border-collapse: collapse; border-width: 5px;border-style: solid;font-size: 25px;">
-           
+    <table border style="float:right;border-collapse: collapse; border-width: 5px;border-style: solid;font-size: 25px;">
+
         <tr id="div_linha1"></tr>
         <tr id="div_linha2"></tr>
         <tr id="div_linha3"></tr>
@@ -47,21 +78,22 @@
 
 
 </body>
+
 </html>
 
 <script>
     //----->⠀<---- caracter invisivel
-    var linha1  = "⠀⠀⠀⠀1⠀⠀⠀⠀";
-    var linha2  = "⠀⠀2PC⠀⠀⠀⠀";
-    var linha3  = "⠀⠀⠀⠀P⠀4⠀8";
-    var linha4  = "⠀⠀⠀3ULA⠀C";
-    var linha5  = "⠀⠀⠀⠀⠀7RAM";
-    var linha6  = "⠀⠀⠀⠀⠀⠀D⠀d";
-    var linha7  =  "6UBUNTu⠀";
-    var linha8  = "⠀⠀⠀⠀⠀⠀I⠀⠀";
-    var linha9  = "⠀⠀⠀⠀⠀⠀N⠀⠀";
+    var linha1 = "⠀⠀⠀⠀1⠀⠀⠀⠀";
+    var linha2 = "⠀⠀2PC⠀⠀⠀⠀";
+    var linha3 = "⠀⠀⠀⠀P⠀4⠀8";
+    var linha4 = "⠀⠀⠀3ULA⠀C";
+    var linha5 = "⠀⠀⠀⠀⠀7RAM";
+    var linha6 = "⠀⠀⠀⠀⠀⠀D⠀d";
+    var linha7 = "6UBUNTu⠀";
+    var linha8 = "⠀⠀⠀⠀⠀⠀I⠀⠀";
+    var linha9 = "⠀⠀⠀⠀⠀⠀N⠀⠀";
     var linha10 = "⠀5WINDOWS";
-    
+
     var c1 = 0;
     var c2 = 0;
     var c3 = 0;
@@ -74,193 +106,192 @@
     var c10 = 0;
 
     //laço que dura enquanto o contador for menor do que a variavel linha
-    while(c1 < linha1.length){
+    while (c1 < linha1.length) {
         //Se o caracter da linha for igual a 2, ele vai imprimir uma coluna com o fundo vermelho
-        if(linha1[c1] == "1"){
+        if (linha1[c1] == "1") {
             div_linha1.innerHTML += `<th style="background-color:red;">${linha1[c1]}</th>`;
         }
         //Se o caracter da linha for diferente de caracter invisivel, ele imprime uma coluna
         // com a letra da posição atual da posição da linha1
-        else if(linha1[c1] != "⠀" ){
+        else if (linha1[c1] != "⠀") {
         }
         //Senão, ele imprime uma coluna "vazia" com o caracter invisivel
-        else{
+        else {
             div_linha1.innerHTML += `<td class="a">${linha1[c1]}</td>`;
         }
-        
+
         c1++;
     }
     //laço que dura enquanto o contador for menor do que a variavel linha
-    while(c2 < linha2.length){
+    while (c2 < linha2.length) {
         //Se o caracter da linha for igual a 2, ele vai imprimir uma coluna com o fundo vermelho
-        if(linha2[c2] == "2"){
+        if (linha2[c2] == "2") {
             div_linha2.innerHTML += `<th style="background-color:red;">${linha2[c2]}</th>`;
         }
         //Se o caracter da linha for diferente de caracter invisivel, ele imprime uma coluna
         // com a letra da posição atual da posição da linha2
-        else if(linha2[c2] != "⠀" ){
-            if(linha2[c2] !== "C"){
+        else if (linha2[c2] != "⠀") {
+            if (linha2[c2] !== "C") {
                 div_linha2.innerHTML += `<td class="res2">${linha2[c2]}</td>`;
-            }else{
+            } else {
                 div_linha2.innerHTML += `<td class="res1">${linha2[c2]}</td>`;
             }
         }
         //Senão, ele imprime uma coluna "vazia" com o caracter invisivel
-        else{
+        else {
             div_linha2.innerHTML += `<td class="a">${linha2[c2]}</td>`;
         }
-        
+
         c2++;
     }
     //laço que dura enquanto o contador for menor do que a variavel linha
-    while(c3 < linha3.length){
+    while (c3 < linha3.length) {
         //Se o caracter da linha for igual a 2, ele vai imprimir uma coluna com o fundo vermelho
-        if(linha3[c3] == "4" || linha3[c3] == "8"){
+        if (linha3[c3] == "4" || linha3[c3] == "8") {
             div_linha3.innerHTML += `<th style="background-color:red;">${linha3[c3]}</th>`;
         }
         //Se o caracter da linha for diferente de caracter invisivel, ele imprime uma coluna
         // com a letra da posição atual da posição da linha3
-        else if(linha3[c3] != "⠀" ){
-                div_linha3.innerHTML += `<td class="res1">${linha3[c3]}</td>`;
+        else if (linha3[c3] != "⠀") {
+            div_linha3.innerHTML += `<td class="res1">${linha3[c3]}</td>`;
         }
         //Senão, ele imprime uma coluna "vazia" com o caracter invisivel
-        else{
+        else {
             div_linha3.innerHTML += `<td class="a">${linha3[c3]}</td>`;
         }
-        
+
         c3++;
     }
     //laço que dura enquanto o contador for menor do que a variavel linha
-    while(c4 < linha4.length){
+    while (c4 < linha4.length) {
         //Se o caracter da linha for igual a 2, ele vai imprimir uma coluna com o fundo vermelho
-        if(linha4[c4] == "3"){
+        if (linha4[c4] == "3") {
             div_linha4.innerHTML += `<th style="background-color:red;">${linha4[c4]}</th>`;
         }
 
         //Se o caracter da linha for diferente de caracter invisivel, ele imprime uma coluna
         // com a letra da posição atual da posição da linha4
-        else if(linha4[c4] != "⠀" ){
+        else if (linha4[c4] != "⠀") {
 
-            if(linha4[c4] == "C"){
+            if (linha4[c4] == "C") {
                 div_linha4.innerHTML += `<td class="res8">${linha4[c4]}</th>`;
-            }else if(linha4[c4] == "U")
-            {
+            } else if (linha4[c4] == "U") {
                 div_linha4.innerHTML += `<td class="res1">${linha4[c4]}</td>`;
-            }else{
+            } else {
                 div_linha4.innerHTML += `<td class="res3">${linha4[c4]}</td>`;
             }
         }
         //Senão, ele imprime uma coluna "vazia" com o caracter invisivel
-        else{
+        else {
             div_linha4.innerHTML += `<td class="a">${linha4[c4]}</td>`;
         }
-        
+
         c4++;
     }
     //laço que dura enquanto o contador for menor do que a variavel linha
-    while(c5 < linha5.length){
+    while (c5 < linha5.length) {
         //Se o caracter da linha for igual a 2, ele vai imprimir uma coluna com o fundo vermelho
-        if(linha5[c5] == "7"){
+        if (linha5[c5] == "7") {
             div_linha5.innerHTML += `<th style="background-color:red;">${linha5[c5]}</th>`;
         }
-        else if(linha5[c5] != "⠀" ){
-            if(linha5[c5] != "R" ){
+        else if (linha5[c5] != "⠀") {
+            if (linha5[c5] != "R") {
                 div_linha5.innerHTML += `<td class="res7">${linha5[c5]}</td>`;
-            }else{
+            } else {
                 div_linha5.innerHTML += `<td class="res4">${linha5[c5]}</td>`;
             }
         }
         //Senão, ele imprime uma coluna "vazia" com o caracter invisivel
-        else{
+        else {
             div_linha5.innerHTML += `<td class="a">${linha5[c5]}</td>`;
         }
-        
+
         c5++;
     }
     //laço que dura enquanto o contador for menor do que a variavel linha
-    while(c6 < linha6.length){
-        if(linha6[c6] != "⠀" ){
-            if(linha6[c6] == "d"){
+    while (c6 < linha6.length) {
+        if (linha6[c6] != "⠀") {
+            if (linha6[c6] == "d") {
                 div_linha6.innerHTML += `<td class="res8">${linha6[c6]}</td>`;
-            }else{
+            } else {
                 div_linha6.innerHTML += `<td class="res4">${linha6[c6]}</td>`;
             }
         }
         //Senão, ele imprime uma coluna "vazia" com o caracter invisivel
-        else{
+        else {
             div_linha6.innerHTML += `<td class="a">${linha6[c6]}</td>`;
         }
-        
+
         c6++;
     }
 
     //laço que dura enquanto o contador for menor do que a variavel linha
-    while(c7 < linha7.length){
+    while (c7 < linha7.length) {
         //Se o caracter da linha for igual a 2, ele vai imprimir uma coluna com o fundo vermelho
-        if(linha7[c7] == "6"){
+        if (linha7[c7] == "6") {
             div_linha7.innerHTML += `<th style="background-color:red;">${linha7[c7]}</th>`;
-        }else if(linha7[c7] != "⠀" ){
-            if(linha7[c7] != "u"){
+        } else if (linha7[c7] != "⠀") {
+            if (linha7[c7] != "u") {
                 div_linha7.innerHTML += `<td class="res6">${linha7[c7]}</td>`;
-            }else{
+            } else {
                 div_linha7.innerHTML += `<td class="res4">${linha7[c7]}</td>`;
             }
         }
         //Senão, ele imprime uma coluna "vazia" com o caracter invisivel
-        else{
+        else {
             div_linha7.innerHTML += `<td class="a">${linha7[c7]}</td>`;
         }
-        
+
         c7++;
     }
 
     //laço que dura enquanto o contador for menor do que a variavel linha
-    while(c8 < linha8.length){
-        if(linha8[c8] != "⠀" ){
+    while (c8 < linha8.length) {
+        if (linha8[c8] != "⠀") {
             div_linha8.innerHTML += `<td class="res4">${linha8[c8]}</td>`;
         }
         //Senão, ele imprime uma coluna "vazia" com o caracter invisivel
-        else{
+        else {
             div_linha8.innerHTML += `<td class="a">${linha8[c8]}</td>`;
         }
-        
+
         c8++;
     }
 
     //laço que dura enquanto o contador for menor do que a variavel linha
-    while(c9 < linha9.length){
-        if(linha9[c9] != "⠀" ){
+    while (c9 < linha9.length) {
+        if (linha9[c9] != "⠀") {
             div_linha9.innerHTML += `<td class="res4">${linha9[c9]}</td>`;
         }
         //Senão, ele imprime uma coluna "vazia" com o caracter invisivel
-        else{
+        else {
             div_linha9.innerHTML += `<td class="a">${linha9[c9]}</td>`;
         }
-        
+
         c9++;
     }
 
     //laço que dura enquanto o contador for menor do que a variavel linha
-    while(c10 < linha10.length){
+    while (c10 < linha10.length) {
         //Se o caracter da linha for igual a 2, ele vai imprimir uma coluna com o fundo vermelho
-        if(linha10[c10] == "5"){
+        if (linha10[c10] == "5") {
             div_linha10.innerHTML += `<th style="background-color:red;">${linha10[c10]}</th>`;
-        }else if(linha10[c10] != "⠀" ){
-            if(linha10[c10] != "O"){
+        } else if (linha10[c10] != "⠀") {
+            if (linha10[c10] != "O") {
                 div_linha10.innerHTML += `<td class="res5">${linha10[c10]}</td>`;
-            }else{
+            } else {
                 div_linha10.innerHTML += `<td class="res4">${linha10[c10]}</td>`;
-                
+
             }
         }
         //Senão, ele imprime uma coluna "vazia" com o caracter invisivel
-        else{
+        else {
             div_linha10.innerHTML += `<td class="a">${linha10[c10]}</td>`;
         }
-        
+
         c10++;
     }
-    
-    
+
+
 
 </script>
