@@ -4,8 +4,10 @@ function validar_1() {
     if (input1.toLowerCase() == 'cpu') {
         alert('Resposta Certa')
         $('.res1').css('opacity', '1')
+        $('.res1').css('backgroundColor', 'rgb(85, 224, 125)')
         $('#pergunta_1').css('display', 'none')
         $('#pergunta_2').css('display', 'block')
+
     }
 
     else {
@@ -19,6 +21,7 @@ function validar_2() {
     if (input2.toLowerCase() == 'pc') {
         alert('Resposta Certa')
         $('.res2').css('opacity', '1')
+        $('.res2').css('backgroundColor', 'rgb(85, 224, 125)')
         $('#pergunta_2').css('display', 'none')
         $('#pergunta_3').css('display', 'block')
     }
@@ -34,6 +37,7 @@ function validar_3() {
     if (input3.toLowerCase() == 'ula') {
         alert('Resposta Certa')
         $('.res3').css('opacity', '1')
+        $('.res3').css('backgroundColor', 'rgb(85, 224, 125)')
         $('#pergunta_3').css('display', 'none')
         $('#pergunta_4').css('display', 'block')
     }
@@ -49,6 +53,7 @@ function validar_4() {
     if (input4.toLowerCase() == 'arduino' || input4.toLowerCase() == 'arduíno') {
         alert('Resposta Certa')
         $('.res4').css('opacity', '1')
+        $('.res4').css('backgroundColor', 'rgb(85, 224, 125)')
         $('#pergunta_4').css('display', 'none')
         $('#pergunta_5').css('display', 'block')
     }
@@ -64,6 +69,7 @@ function validar_5() {
     if (input5.toLowerCase() == 'windows') {
         alert('Resposta Certa')
         $('.res5').css('opacity', '1')
+        $('.res5').css('backgroundColor', 'rgb(85, 224, 125)')
         $('#pergunta_5').css('display', 'none')
         $('#pergunta_6').css('display', 'block')
     }
@@ -79,6 +85,7 @@ function validar_6() {
     if (input6 == 'ubuntu') {
         alert('Resposta Certa')
         $('.res6').css('opacity', '1')
+        $('.res6').css('backgroundColor', 'rgb(85, 224, 125)')
         $('#pergunta_6').css('display', 'none')
         $('#pergunta_7').css('display', 'block')
     }
@@ -94,6 +101,7 @@ function validar_7() {
     if (input7.toLowerCase() == 'ram') {
         alert('Resposta Certa')
         $('.res7').css('opacity', '1')
+        $('.res7').css('backgroundColor', 'rgb(85, 224, 125)')
         $('#pergunta_7').css('display', 'none')
         $('#pergunta_8').css('display', 'block')
     }
@@ -109,6 +117,7 @@ function validar_8() {
     if (input8 == 'cmd') {
         alert('Resposta Certa, você acabou o questionário!!')
         $('.res8').css('opacity', '1')
+        $('.res8').css('backgroundColor', 'rgb(85, 224, 125)')
         $('#resetar').css('display', 'block')
     }
 
