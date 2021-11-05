@@ -3,3 +3,9 @@
     margin: 0;
     text-align: center;
 }
+.res1,.res2,.res3,.res4,.res5,.res6,.res7,.res8{
+    opacity: 0;
+}
+#pergunta_2, #pergunta_3, #pergunta_4, #pergunta_5, #pergunta_6, #pergunta_7, #pergunta_8, #resetar{
+    display: none;
+}
