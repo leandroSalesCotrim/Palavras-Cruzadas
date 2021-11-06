@@ -11,9 +11,23 @@ body{
     padding: 0;
 }
 .res1,.res2,.res3,.res4,.res5,.res6,.res7,.res8{
-    opacity: 0;
+    opacity: 1;
 }
-#pergunta_2, #pergunta_3, #pergunta_4, #pergunta_5, #pergunta_6, #pergunta_7, #pergunta_8, #resetar{
+#pergunta_2,
+ #pergunta_3,
+  #pergunta_4,
+   #pergunta_5,
+    #pergunta_6,
+     #pergunta_7,
+      #pergunta_8,
+      #pergunta_9,
+       #pergunta_10,
+        #pergunta_11,
+         #pergunta_12,
+          #pergunta_13,
+           #pergunta_14,
+            #pergunta_15,
+             #pergunta_16, #resetar{
     display: none;
 }
 
